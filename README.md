@@ -93,6 +93,7 @@ This FLOSS software is funded by donations only. Please support us to maintain a
 The MIT License (MIT)
 
 Copyright (c) 2015 Hypriot
+
 Copyright (c) 2019 sndnvaps
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
