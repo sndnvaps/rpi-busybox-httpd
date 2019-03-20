@@ -2,6 +2,7 @@
 
 Raspberry Pi compatible Docker Image with a minimal `Busybox httpd` web server.
 
+
 ## Details
 - [Source Project Page](https://github.com/hypriot)
 - [Source Repository](https://github.com/hypriot/rpi-busybox-httpd)
@@ -45,6 +46,40 @@ make test
 make push
 ```
 
+---------------------------------------------------------------------
+Now use apache-httpd for httpd server 
+run with docker-compsoe
+```bash
+docker-compose up --build
+```
+
+## Make you own change for httpd server
+  Modified the configure files in [conf](/conf)
+  
+## You can change the docker-compose.yml to suit your work
+```bash
+version: '2.0'
+
+services:
+  httpd:
+    build: .
+    environment:
+      TZ: 'EST5EDT'
+    networks:
+      - default
+    read_only: false 
+    tmpfs:
+      - /tmp
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    ports:
+      - "80:80"
+    volumes:
+      - /home/user/share/path:/usr/local/apache2/htdocs/
+networks:
+  default:
+```
 
 ## Buy us a beer!
 
@@ -58,6 +93,8 @@ This FLOSS software is funded by donations only. Please support us to maintain a
 The MIT License (MIT)
 
 Copyright (c) 2015 Hypriot
+
+Copyright (c) 2019 sndnvaps
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
